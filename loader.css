@@ -1,0 +1,221 @@
+/* ============================================================
+   ZEEGO Loader — Editorial edition
+   Warm cream backdrop · rotating serif brand · saffron plate
+   ============================================================ */
+
+:root {
+    --zl-ink:      #0F0E0C;
+    --zl-cream:    #F5EFE1;
+    --zl-cream-2:  #EDE6D2;
+    --zl-paper:    #FBF7EC;
+    --zl-accent:   #E85D0C;
+    --zl-accent-2: #F27520;
+    --zl-plate:    #FBF7EC;
+    --zl-plate-ring: rgba(232,93,12,0.18);
+}
+
+/* ---------- Full-screen backdrop ---------- */
+.loader-container {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(900px 500px at 50% 30%, rgba(232,93,12,0.08), transparent 60%),
+        radial-gradient(700px 400px at 80% 80%, rgba(232,93,12,0.05), transparent 60%),
+        var(--zl-cream);
+    transition: opacity .5s ease, visibility .5s ease;
+}
+.loader-container.hide {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.zeego-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 20px;
+    animation: zlFadeIn .6s ease;
+}
+@keyframes zlFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* ---------- Brand — serif italic wordmark ---------- */
+.zl-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    line-height: 1;
+}
+.zl-brand-text {
+    font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 52px;
+    letter-spacing: -0.035em;
+    color: var(--zl-ink);
+    animation: zlBrandBreath 2.2s ease-in-out infinite;
+}
+.zl-brand-leaf {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--zl-accent);
+    border-radius: 50%;
+    align-self: flex-end;
+    margin-bottom: 6px;
+    margin-left: -2px;
+    animation: zlDotPulse 1.6s ease-in-out infinite;
+    font-size: 0;
+    color: transparent;
+}
+@keyframes zlBrandBreath {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.02); opacity: 0.85; }
+}
+@keyframes zlDotPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232,93,12,0.35); }
+    50%      { transform: scale(1.3); box-shadow: 0 0 0 8px rgba(232,93,12,0); }
+}
+
+/* ---------- Plate + orbit ---------- */
+.zl-plate-wrap {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: grid;
+    place-items: center;
+}
+
+.zl-plate {
+    position: relative;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: var(--zl-plate);
+    border: 3px solid var(--zl-cream-2);
+    display: grid; place-items: center;
+    box-shadow:
+        0 20px 40px rgba(15,14,12,0.10),
+        inset 0 0 0 8px var(--zl-cream);
+    animation: zlPlateFloat 3s ease-in-out infinite;
+}
+.zl-plate-inner {
+    width: 82px; height: 82px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--zl-accent-2), var(--zl-accent));
+    display: grid; place-items: center;
+    box-shadow: inset 0 -4px 14px rgba(0,0,0,0.15);
+}
+.zl-emoji {
+    font-size: 40px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    animation: zlEmojiWobble 2.4s ease-in-out infinite;
+}
+@keyframes zlPlateFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+@keyframes zlEmojiWobble {
+    0%, 100% { transform: rotate(-4deg); }
+    50%      { transform: rotate(4deg); }
+}
+
+.zl-plate-shadow {
+    position: absolute;
+    bottom: 6px;
+    width: 100px; height: 12px;
+    background: radial-gradient(ellipse, rgba(15,14,12,0.20), transparent 65%);
+    filter: blur(2px);
+    animation: zlShadowBreath 3s ease-in-out infinite;
+}
+@keyframes zlShadowBreath {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50%      { transform: scale(0.85); opacity: 0.5; }
+}
+
+/* Orbit ring */
+.zl-orbit {
+    position: absolute;
+    inset: 0;
+    animation: zlOrbit 6s linear infinite;
+}
+@keyframes zlOrbit {
+    to { transform: rotate(360deg); }
+}
+.zl-food {
+    position: absolute;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--zl-paper);
+    border: 2px solid var(--zl-cream-2);
+    display: grid; place-items: center;
+    font-size: 18px;
+    box-shadow: 0 6px 16px rgba(15,14,12,0.12);
+}
+.zl-food-1 { top: -6px; left: 50%; transform: translateX(-50%); }
+.zl-food-2 { right: -6px; top: 50%; transform: translateY(-50%); }
+.zl-food-3 { bottom: -6px; left: 50%; transform: translateX(-50%); }
+.zl-food-4 { left: -6px; top: 50%; transform: translateY(-50%); }
+
+/* Counter-rotate emojis so they stay upright */
+.zl-food { animation: zlCounterOrbit 6s linear infinite; }
+@keyframes zlCounterOrbit {
+    to { transform-origin: center; }
+}
+/* Because parent already rotates, we counter-rotate to keep emojis upright */
+.zl-orbit .zl-food-1 { animation: zlCounterUp1 6s linear infinite; }
+.zl-orbit .zl-food-2 { animation: zlCounterUp2 6s linear infinite; }
+.zl-orbit .zl-food-3 { animation: zlCounterUp3 6s linear infinite; }
+.zl-orbit .zl-food-4 { animation: zlCounterUp4 6s linear infinite; }
+@keyframes zlCounterUp1 { from { transform: translateX(-50%) rotate(0);    } to { transform: translateX(-50%) rotate(-360deg); } }
+@keyframes zlCounterUp2 { from { transform: translateY(-50%) rotate(0);    } to { transform: translateY(-50%) rotate(-360deg); } }
+@keyframes zlCounterUp3 { from { transform: translateX(-50%) rotate(0);    } to { transform: translateX(-50%) rotate(-360deg); } }
+@keyframes zlCounterUp4 { from { transform: translateY(-50%) rotate(0);    } to { transform: translateY(-50%) rotate(-360deg); } }
+
+/* ---------- Tagline ---------- */
+.zl-tagline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--zl-ink);
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+.zl-dots {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+}
+.zl-dots i {
+    width: 5px; height: 5px;
+    background: var(--zl-accent);
+    border-radius: 50%;
+    animation: zlDotJump 1.2s ease-in-out infinite;
+}
+.zl-dots i:nth-child(2) { animation-delay: 0.15s; }
+.zl-dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes zlDotJump {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+.zl-subline {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    color: rgba(15,14,12,0.5);
+    text-transform: uppercase;
+    margin-top: -6px;
+}

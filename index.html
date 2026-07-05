@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#F5EFE1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Zeego — Ghar ka khaana, delivered warm.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- =========================  Loader — NEW clean plate + orbiting dots animation  ========================= -->
+<div class="loader-container" id="mainLoader">
+    <div class="zeego-loader">
+        <!-- Brand logo pulse -->
+        <div class="zl-brand">
+            <span class="zl-brand-text">Zeego</span>
+            <span class="zl-brand-leaf">🌱</span>
+        </div>
+
+        <!-- Plate with orbiting food emojis -->
+        <div class="zl-plate-wrap">
+            <div class="zl-orbit">
+                <span class="zl-food zl-food-1">🍔</span>
+                <span class="zl-food zl-food-2">🍕</span>
+                <span class="zl-food zl-food-3">🍜</span>
+                <span class="zl-food zl-food-4">🍩</span>
+            </div>
+            <div class="zl-plate">
+                <div class="zl-plate-inner">
+                    <span class="zl-emoji">🍲</span>
+                </div>
+            </div>
+            <div class="zl-plate-shadow"></div>
+        </div>
+
+        <!-- Loading dots + tagline -->
+        <div class="zl-tagline">
+            <span>Getting your food ready</span>
+            <span class="zl-dots"><i></i><i></i><i></i></span>
+        </div>
+        <div class="zl-subline">HOME · KITCHENS · WARM</div>
+    </div>
+</div>
+
+<!-- =========================  App Shell  ========================= -->
+<div class="app-shell" id="appShell">
+
+    <!-- ===== TOP APP BAR — clean, no hamburger, centered brand ===== -->
+    <header class="app-bar" id="appBar">
+        <div class="app-bar-inner">
+            <div></div>
+            <div class="brand-wrap">
+                <div class="brand-logo">zeego<span class="leaf">🌱</span></div>
+                <span class="brand-tagline">GHAR · KA · KHAANA</span>
+            </div>
+            <button class="bell-btn" id="bellBtn" aria-label="Notifications">
+                <i data-lucide="bell"></i>
+                <span class="bell-badge" id="bellBadge">3</span>
+            </button>
+        </div>
+
+        <!-- Deliver-to bar -->
+        <div class="deliver-bar" id="deliverBar">
+            <div class="pin"><i data-lucide="map-pin"></i></div>
+            <div class="info">
+                <span class="lbl">Deliver to</span>
+                <span class="addr" id="deliverAddr">Detecting your location…</span>
+            </div>
+            <span class="chev"><i data-lucide="chevron-down"></i></span>
+        </div>
+    </header>
+
+    <!-- ============ HOME VIEW ============ -->
+    <main class="view view-home active" id="viewHome">
+
+        <!-- HERO BANNER -->
+        <section class="hero-card">
+            <div class="hero-content">
+                <span class="hero-badge">Zero commission</span>
+                <h1>Ghar ka <span class="accent">khaana</span>,<br>delivered warm.</h1>
+                <p>Real food, real home kitchens.<br>No hidden tax, no platform cut.</p>
+                <button class="hero-cta" id="orderNowBtn">
+                    Order Now <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+            <div class="hero-image"></div>
+            <div class="hero-dots"><span class="active"></span><span></span></div>
+        </section>
+
+        <!-- FEATURE ROW -->
+        <section class="feature-row">
+            <div class="feature-item">
+                <div class="feature-icon peach"><i data-lucide="truck"></i></div>
+                <span class="feature-title">Fast Delivery</span>
+                <span class="feature-sub">Lightning fast</span>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon blue"><i data-lucide="award"></i></div>
+                <span class="feature-title">Top Rated</span>
+                <span class="feature-sub">Best restaurants</span>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon orange"><i data-lucide="percent"></i></div>
+                <span class="feature-title">Offers</span>
+                <span class="feature-sub">Best deals</span>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon navy"><i data-lucide="utensils"></i></div>
+                <span class="feature-title">Pure &amp; Safe</span>
+                <span class="feature-sub">Hygienic meals</span>
+            </div>
+        </section>
+
+        <!-- POPULAR CATEGORIES -->
+        <section class="block">
+            <div class="block-head">
+                <h2 class="block-title">Popular Categories</h2>
+                <a class="see-all" data-nav="search">See All</a>
+            </div>
+            <div class="categories-scroll" id="categoriesList">
+                <div class="cat-item" data-cat="burger">
+                    <div class="cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&q=80" alt="Burgers">
+                        <span class="cat-badge-icon">🍔</span>
+                    </div>
+                    <div class="cat-name">Burgers</div>
+                </div>
+                <div class="cat-item" data-cat="pizza">
+                    <div class="cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&q=80" alt="Pizza">
+                        <span class="cat-badge-icon">🍕</span>
+                    </div>
+                    <div class="cat-name">Pizza</div>
+                </div>
+                <div class="cat-item" data-cat="biryani">
+                    <div class="cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200&q=80" alt="Biryani">
+                        <span class="cat-badge-icon">🍛</span>
+                    </div>
+                    <div class="cat-name">Biryani</div>
+                </div>
+                <div class="cat-item" data-cat="chinese">
+                    <div class="cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=200&q=80" alt="Noodles">
+                        <span class="cat-badge-icon">🥡</span>
+                    </div>
+                    <div class="cat-name">Noodles</div>
+                </div>
+                <div class="cat-item" data-cat="dessert">
+                    <div class="cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=200&q=80" alt="Desserts">
+                        <span class="cat-badge-icon">🍰</span>
+                    </div>
+                    <div class="cat-name">Desserts</div>
+                </div>
+                <div class="cat-item" data-cat="south-indian">
+                    <div class="cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=200&q=80" alt="South Indian">
+                        <span class="cat-badge-icon">🥘</span>
+                    </div>
+                    <div class="cat-name">S. Indian</div>
+                </div>
+                <div class="cat-item" data-cat="rolls">
+                    <div class="cat-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=200&q=80" alt="Rolls">
+                        <span class="cat-badge-icon">🌯</span>
+                    </div>
+                    <div class="cat-name">Rolls</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOP DISHES -->
+        <section class="block">
+            <div class="block-head">
+                <h2 class="block-title">Top Dishes Near You</h2>
+                <span class="block-sub">Most loved 🔥</span>
+            </div>
+            <div class="hscroll" id="topDishesScroll"></div>
+        </section>
+
+        <!-- RECOMMENDED -->
+        <section class="block">
+            <div class="block-head">
+                <h2 class="block-title">Recommended For You</h2>
+                <a class="see-all">See All</a>
+            </div>
+            <div class="rest-list" id="recommendedList"></div>
+        </section>
+
+        <!-- ALL RESTAURANTS -->
+        <section class="block">
+            <div class="block-head">
+                <h2 class="block-title">Restaurants Near You</h2>
+            </div>
+            <div class="filters" id="filterList">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="rating">Rating 4.0+</button>
+                <button class="filter-btn" data-filter="fast">Fast Delivery</button>
+                <button class="filter-btn" data-filter="offer">Offers</button>
+                <button class="filter-btn" data-filter="pure-veg">Pure Veg</button>
+            </div>
+            <div class="rest-list" id="restaurantsList" style="margin-top:14px;"></div>
+        </section>
+
+        <div class="end-spacer"></div>
+    </main>
+
+    <!-- ============ SEARCH VIEW ============ -->
+    <main class="view view-search" id="viewSearch">
+        <div class="view-header">
+            <h2>Search</h2>
+            <p class="muted">Find restaurants, cuisines &amp; dishes</p>
+        </div>
+        <div class="search-bar" style="margin-top:12px;">
+            <i data-lucide="search"></i>
+            <input type="text" placeholder="Search restaurants or dishes" id="searchInput" enterkeyhint="search">
+            <button class="search-mic" aria-label="Filter"><i data-lucide="sliders-horizontal"></i></button>
+        </div>
+        <div class="search-tags" id="searchTags">
+            <button class="tag" data-tag="biryani">🍛 Biryani</button>
+            <button class="tag" data-tag="pizza">🍕 Pizza</button>
+            <button class="tag" data-tag="burger">🍔 Burger</button>
+            <button class="tag" data-tag="dosa">🥘 Dosa</button>
+            <button class="tag" data-tag="noodles">🥡 Noodles</button>
+            <button class="tag" data-tag="cake">🍰 Cake</button>
+            <button class="tag" data-tag="coffee">☕ Coffee</button>
+            <button class="tag" data-tag="roll">🌯 Rolls</button>
+        </div>
+        <h3 class="muted-title">Results</h3>
+        <div class="rest-list" id="searchResults" style="padding: 0 20px;">
+            <p class="empty-state-text">Start typing above ⬆️</p>
+        </div>
+        <div class="end-spacer"></div>
+    </main>
+
+    <!-- ============ ORDERS VIEW ============ -->
+    <main class="view view-orders" id="viewOrders">
+        <div class="view-header">
+            <h2>Your Orders</h2>
+            <p class="muted">Track your delicious history</p>
+        </div>
+        <div class="orders-list" id="ordersList">
+            <div class="empty-state">
+                <i data-lucide="receipt"></i>
+                <h3>No orders yet</h3>
+                <p>Your past orders will appear here</p>
+                <button class="btn-primary" data-nav="home"><i data-lucide="utensils"></i> Order Now</button>
+            </div>
+        </div>
+        <div class="end-spacer"></div>
+    </main>
+
+    <!-- ============ PROFILE VIEW ============ -->
+    <main class="view view-profile" id="viewProfile">
+        <div class="profile-hero">
+            <div class="avatar-circle" id="profileAvatar"><i data-lucide="user"></i></div>
+            <h2 id="profileName">Guest User</h2>
+            <p id="profilePhone">Login to order food</p>
+            <button class="btn-primary" id="profileLoginBtn"><i data-lucide="log-in"></i> Login / Sign up</button>
+        </div>
+        <div class="profile-menu">
+            <a class="menu-row" data-nav="orders"><span class="mi"><i data-lucide="shopping-bag"></i></span><span class="lbl">My Orders</span><span class="chev"><i data-lucide="chevron-right"></i></span></a>
+            <a class="menu-row" id="profileLocationRow"><span class="mi"><i data-lucide="map-pin"></i></span><span class="lbl">Delivery Address</span><span class="chev"><i data-lucide="chevron-right"></i></span></a>
+            <a class="menu-row"><span class="mi"><i data-lucide="heart"></i></span><span class="lbl">Favourites</span><span class="chev"><i data-lucide="chevron-right"></i></span></a>
+            <a class="menu-row"><span class="mi"><i data-lucide="tag"></i></span><span class="lbl">Offers &amp; Coupons</span><span class="chev"><i data-lucide="chevron-right"></i></span></a>
+            <a class="menu-row"><span class="mi"><i data-lucide="headphones"></i></span><span class="lbl">Help &amp; Support</span><span class="chev"><i data-lucide="chevron-right"></i></span></a>
+            <a class="menu-row"><span class="mi"><i data-lucide="info"></i></span><span class="lbl">About Zeego</span><span class="chev"><i data-lucide="chevron-right"></i></span></a>
+            <a class="menu-row" href="../admin-app/index.html" target="_blank"><span class="mi"><i data-lucide="shield"></i></span><span class="lbl">Admin Dashboard</span><span class="chev"><i data-lucide="chevron-right"></i></span></a>
+            <a class="menu-row danger" id="profileLogoutRow" style="display:none;"><span class="mi"><i data-lucide="log-out"></i></span><span class="lbl">Logout</span><span class="chev"><i data-lucide="chevron-right"></i></span></a>
+        </div>
+        <p class="small-center">Zeego · v1.0 · Made with ❤️</p>
+        <div class="end-spacer"></div>
+    </main>
+
+    <!-- ============ RESTAURANT FULL PAGE (overlay) ============ -->
+    <div class="full-page" id="restaurantPage">
+        <div class="rest-page-head">
+            <button class="back-btn" id="closeRestaurantPage" aria-label="Back"><i data-lucide="arrow-left"></i></button>
+            <h3 id="restPageHeaderName">Restaurant</h3>
+            <button class="back-btn" id="restPageShare" aria-label="Share"><i data-lucide="share-2"></i></button>
+        </div>
+        <div id="restaurantPageBody"></div>
+        <div class="rest-page-cartbar" id="restPageCartBar" style="display:none;">
+            <div class="info">
+                <strong id="restCartCount">0 items</strong>
+                <span id="restCartTotal">₹0</span>
+            </div>
+            <button class="btn" id="restCartViewBtn">View Cart <i data-lucide="arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- ============ TRACK ORDER FULL PAGE ============ -->
+    <div class="track-page" id="trackPage">
+        <div class="track-head">
+            <button class="back-btn" id="closeTrackPage"><i data-lucide="arrow-left"></i></button>
+            <h3>Track Order</h3>
+            <button class="back-btn" id="callSupport"><i data-lucide="phone"></i></button>
+        </div>
+
+        <div class="track-hero">
+            <div class="eta-num" id="trackEtaNum">--</div>
+            <div class="eta-lbl">Minutes to arrive</div>
+            <div class="eta-status" id="trackEtaStatus">Confirming your order…</div>
+        </div>
+
+        <div class="status-pipeline" id="statusPipeline"></div>
+
+        <div class="rider-card" id="riderCard" style="display:none;">
+            <div class="rider-avatar" id="riderAvatar">R</div>
+            <div class="rider-info">
+                <h5 id="riderName">Assigning rider…</h5>
+                <p id="riderMeta">Please wait a moment</p>
+            </div>
+            <div class="rider-actions">
+                <button class="icon-btn chat" title="Message"><i data-lucide="message-circle"></i></button>
+                <button class="icon-btn" title="Call"><i data-lucide="phone"></i></button>
+            </div>
+        </div>
+
+        <div class="track-summary" id="trackSummary"></div>
+    </div>
+
+    <!-- ============ BOTTOM NAV ============ -->
+    <nav class="bottom-nav" id="bottomNav">
+        <button class="nav-item active" data-nav="home">
+            <i data-lucide="home"></i>
+            <span class="lbl">Home</span>
+        </button>
+        <button class="nav-item" data-nav="search">
+            <i data-lucide="search"></i>
+            <span class="lbl">Search</span>
+        </button>
+        <button class="nav-item nav-cart-btn" data-nav="cart" id="navCartBtn">
+            <span class="cart-bubble">
+                <i data-lucide="shopping-cart"></i>
+            </span>
+            <span class="cart-badge-mini" id="cartBadge">0</span>
+            <span class="lbl">Cart</span>
+        </button>
+        <button class="nav-item" data-nav="orders">
+            <i data-lucide="clipboard-list"></i>
+            <span class="lbl">Orders</span>
+        </button>
+        <button class="nav-item" data-nav="profile">
+            <i data-lucide="user"></i>
+            <span class="lbl">Profile</span>
+        </button>
+    </nav>
+</div>
+
+<!-- ============ Cart Sheet ============ -->
+<div class="cart-sheet" id="cartSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+        <h3><i data-lucide="shopping-bag"></i> Your Cart</h3>
+        <button class="icon-close" id="closeCart"><i data-lucide="x"></i></button>
+    </div>
+    <div class="cart-restaurant" id="cartRestaurant"></div>
+    <div class="cart-items" id="cartItems">
+        <div class="empty-cart">
+            <i data-lucide="shopping-basket" style="width:60px;height:60px;"></i>
+            <p>Your cart is empty</p>
+            <span>Add items from any restaurant to get started</span>
+        </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+        <div class="bill-details">
+            <div class="bill-row"><span>Item Total</span><span id="itemTotal">₹0</span></div>
+            <div class="bill-row"><span>Delivery Fee</span><span id="deliveryFee">₹0</span></div>
+            <div class="bill-row"><span>Taxes &amp; Charges</span><span id="gstAmount">₹0</span></div>
+            <div class="bill-row bill-total"><span>To Pay</span><span id="grandTotal">₹0</span></div>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">
+            Proceed to Checkout <i data-lucide="arrow-right"></i>
+        </button>
+    </div>
+</div>
+<div class="overlay" id="cartOverlay"></div>
+
+<!-- ============ Login Modal ============ -->
+<div class="modal" id="loginModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="close-modal" id="closeLogin">&times;</button>
+        <div class="login-body">
+            <div class="brand-logo">Zeego<span class="leaf">🌱</span></div>
+            <h2>Login or Signup</h2>
+            <p class="login-subtitle">Order from your favourite restaurants</p>
+
+            <div id="phoneStep">
+                <div class="phone-input-group">
+                    <select id="countryCode" class="country-select">
+                        <option value="+91">🇮🇳 +91</option>
+                        <option value="+1">🇺🇸 +1</option>
+                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+971">🇦🇪 +971</option>
+                    </select>
+                    <input type="tel" id="phoneNumber" placeholder="Phone number" maxlength="10" inputmode="numeric">
+                </div>
+                <button class="btn-primary block" id="sendOtpBtn">Send OTP</button>
+                <button class="btn-link" id="continueAsGuestBtn" style="margin-top:8px; width:100%;">Continue as Guest</button>
+                <p class="terms-text">By continuing, I accept the <a href="#">Terms</a> &amp; <a href="#">Privacy Policy</a></p>
+            </div>
+
+            <div id="otpStep" style="display:none;">
+                <p class="otp-info">Enter the 6-digit OTP sent to <strong id="phoneDisplay"></strong></p>
+                <div class="otp-input-group">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                </div>
+                <button class="btn-primary block" id="verifyOtpBtn">Verify &amp; Login</button>
+                <p class="resend-text">Didn't receive? <a href="#" id="resendOtp">Resend OTP</a> · <a href="#" id="changeNumber">Change Number</a></p>
+            </div>
+
+            <div id="profileStep" style="display:none;">
+                <h3 style="margin-bottom:14px;">Complete Your Profile</h3>
+                <input type="text" id="userName" placeholder="Full Name" class="form-input">
+                <input type="email" id="userEmail" placeholder="Email (optional)" class="form-input">
+                <button class="btn-primary block" id="completeProfileBtn">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ Checkout Modal ============ -->
+<div class="modal" id="checkoutModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="close-modal" id="closeCheckout">&times;</button>
+        <h2>Checkout</h2>
+        <div class="address-section">
+            <h4><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Delivery Address</h4>
+            <div class="address-card" id="addressCard">
+                <p id="checkoutAddress">Detecting your location…</p>
+            </div>
+        </div>
+        <div class="payment-section">
+            <h4><i data-lucide="credit-card" style="width:14px;height:14px;"></i> Payment Method</h4>
+            <div class="payment-options">
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="cod" checked>
+                    <span>💵 Cash on Delivery</span>
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="upi">
+                    <span>📱 UPI</span>
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="card">
+                    <span>💳 Card</span>
+                </label>
+            </div>
+        </div>
+        <div class="checkout-summary" id="checkoutSummary"></div>
+        <button class="btn-primary block" id="placeOrderBtn">
+            <i data-lucide="check-circle"></i> Place Order
+        </button>
+    </div>
+</div>
+
+<!-- ============ Order Success Modal ============ -->
+<div class="modal" id="successModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="success-modal">
+            <div class="checkmark-circle"><div class="checkmark"></div></div>
+            <h2>Order Placed! 🎉</h2>
+            <p>Your delicious food is on its way</p>
+            <div class="order-id-box">Order ID: <span id="orderIdDisplay"></span></div>
+            <p class="eta-text">Estimated delivery: <strong id="etaDisplay">30-40 mins</strong></p>
+            <button class="btn-primary block" id="trackOrderBtn"><i data-lucide="map-pin"></i> Track Order</button>
+            <button class="btn-link" id="continueShoppingBtn" style="width:100%; margin-top:8px;">Continue Shopping</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- ============================================================
+     SAFETY LOADER-HIDE — runs no matter what.
+     Original bug: if any ES module failed to load (e.g. when opening
+     the file directly over file://), the loader's hide code inside
+     app.js never executed, so the user only saw the spinner forever.
+     This inline script guarantees the loader will always hide after
+     a max time — and also whenever the app-shell has finished
+     inserting its dynamic content.
+   ============================================================ -->
+<script>
+    (function () {
+        var loader = document.getElementById('mainLoader');
+        function hideLoader() {
+            if (!loader || loader.classList.contains('hide')) return;
+            loader.classList.add('hide');
+            setTimeout(function () { loader.style.display = 'none'; }, 550);
+        }
+        // 1) Hide when window fully loads (normal path)
+        window.addEventListener('load', function () { setTimeout(hideLoader, 800); });
+        // 2) Absolute failsafe — hide after 3.5s no matter what
+        setTimeout(hideLoader, 3500);
+        // 3) Custom event — app.js can call this once it has rendered
+        window.addEventListener('zeego:app-ready', hideLoader);
+    })();
+</script>
+
+<!-- Scripts -->
+<script type="module" src="js/firebase-config.js"></script>
+<script type="module" src="js/data.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/location.js"></script>
+<script type="module" src="js/cart.js"></script>
+<script type="module" src="js/orders.js"></script>
+<script type="module" src="js/tracking.js"></script>
+<script type="module" src="js/app.js"></script>
+
+<script>
+    // Initialize lucide icons on load
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.lucide) window.lucide.createIcons();
+    });
+</script>
+</body>
+</html>
